@@ -26,6 +26,18 @@ int _printf(const char *format, ...)
                 case 'i':
                     count += printf("%d", va_arg(args, int));
                     break;
+		case 'u':
+		    count += printf("%u", va_arg(args, int));
+		    break;
+		case 'o':
+		    count += printf("%o", va_arg(args, unsigned int));
+		    break;
+		case 'x':
+		    count += printf("%x", va_arg(args, unsigned int));
+		    break;
+		case 'X':
+		    count += printf("%X", va_arg(args, unsigned int));
+		    break;
                 case 's':
                     str = va_arg(args, char *);
                     count += printf("%s", str ? str : "(null)");
@@ -33,11 +45,16 @@ int _printf(const char *format, ...)
                 case 'c':
                     count += printf("%c", va_arg(args, int));
                     break;
+		case 'p':
+		    count += printf("%p", va_arg(args, void *));
+		    break;
                 case '%':
                     count += printf("%%");
                     break;
                 default:
-                    count += printf("%%c", format[i]);
+                    putchar('%');
+		    putchar(format[i]);
+		    count += 2;
             }
         }
         else
