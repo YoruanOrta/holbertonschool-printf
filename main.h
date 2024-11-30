@@ -8,5 +8,6 @@
 
 int _putchar(char c);
 int _printf(const char *format, ...);
+int manage_specifier(char format, va_list args);
 
 #endif
