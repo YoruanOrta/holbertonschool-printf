@@ -6,6 +6,7 @@
  * @args: List of arguments
  * Return: Number of characters printed
  */
+
 int manage_specifier(char format, va_list args)
 {
 	char *str;
