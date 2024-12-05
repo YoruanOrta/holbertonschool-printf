@@ -19,3 +19,7 @@ This project is an implementation of the `printf` function, which is used to pro
 To compile the project, you can use the following command:
 
 gcc -Wall -Wextra -Werror -pedantic -std=gnu89 -Wno-format *.c -o printf
+
+## Hyperlinks
+https://github.com/YoruanOrta
+https://github.com/Joan938
