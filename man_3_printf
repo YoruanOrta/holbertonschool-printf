@@ -1,0 +1,108 @@
+.TH _PRINTF 3 "November 25, 2024" "Yoruan Orta, Joan Martinez" "Library Functions"
+.SH NAME
+_printf \- Prints formatted output to standard output.
+
+.SH SYNOPSIS
+.B int _printf(const char *format, ...);
+
+.SH DESCRIPTION
+The 
+.B _printf
+function prints output to the standard output stream, using a format string similar to the standard 
+.B printf
+function.
+The main difference is that 
+.B _printf
+is a custom implementation that handles a limited set of format specifiers, and allows for expansion with variable arguments.
+
+The 
+.I format
+argument is a string containing text and format specifiers, which are replaced by the values of the variable arguments.
+
+.SH FORMAT SPECIFIERS
+The format specifiers supported by this function include, but are not limited to:
+
+.TP
+.B %d, %i
+Prints a signed integer.
+
+.TP
+.B %u
+Prints an unsigned integer.
+
+.TP
+.B %o
+Prints an unsigned integer in octal format.
+
+.TP
+.B %x, %X
+Prints an unsigned integer in hexadecimal format (lowercase for %x, uppercase for %X).
+
+.TP
+.B %c
+Prints a single character.
+
+.TP
+.B %s
+Prints a string.
+
+.TP
+.B %p
+Prints a memory address (pointer).
+
+.TP
+.B %%
+Prints a literal percent character.
+
+Specifiers that are not supported by 
+.B _printf
+will be printed as they are (for example, `%r`).
+
+.SH PARAMETERS
+.IP format
+A string that contains the text to be printed. It may include format specifiers preceded by the `%` symbol, which will be replaced by the corresponding argument values.
+
+.IP "..."
+Variable arguments that correspond to the format specifiers in the format string. The number and types of arguments depend on the specifiers used in the format string.
+
+.SH RETURN VALUE
+Returns the number of characters printed, excluding the null terminator.
+
+.SH EXAMPLES
+.TP
+Simple string printing:
+.nf
+    _printf("Let's try to printf a simple sentence.\n");
+    printf("Let's try to printf a simple sentence.\n");
+.fi
+
+.TP
+Printing different data types:
+.nf
+    int len = _printf("Length:[%d, %i]\n", 39, 39);
+    _printf("Negative:[%d]\n", -762534);
+    _printf("Unsigned:[%u]\n", 2147484671);
+    _printf("Unsigned octal:[%o]\n", 2147484671);
+    _printf("Unsigned hexadecimal:[%x, %X]\n", 2147484671, 2147484671);
+    _printf("Character:[%c]\n", 'H');
+    _printf("String:[%s]\n", "I am a string !");
+    _printf("Address:[%p]\n", (void *)0x7ffe637541f0);
+    _printf("Percent:[%%]\n");
+    _printf("Unknown:[%r]\n");
+.fi
+
+.SH ERRORS
+If an unsupported format specifier is used, such as `%r`, it will be printed as-is in the output without causing the function to fail.
+
+.SH NOTES
+The 
+.B _printf
+function is a custom implementation of the standard 
+.B printf
+function, and it may not be as complete or efficient as the standard version.
+
+.SH AUTHOR
+Yoruan Orta, Joan Martinez
+
+.SH DATE
+November 25, 2024
